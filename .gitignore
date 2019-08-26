@@ -2,3 +2,5 @@
 **/*.code-workspace
 **/.vscode
 .python-version
+**/dist
+**/*.egg-info

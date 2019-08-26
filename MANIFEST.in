@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include data_seeder/templates *
+recursive-include docs *
