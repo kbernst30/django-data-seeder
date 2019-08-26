@@ -2,6 +2,8 @@
 django-data-seeder
 ==================
 
+|package|
+
 This app provides a simple way of seeding data for your data models into your
 development or test database. This can be achieved through the Admin site, via
 a management command, or by writing your own scripts that use a seeder object.
@@ -47,3 +49,8 @@ Quick Start
      python manage.py seeddata [options] app.models.Model [app.models.Model2, ...]
 
    This will generate a single seed for each model provided.
+
+.. |package| image:: https://badge.fury.io/py/django-data-seeder.svg
+    :alt: Package Version
+    :scale: 100%
+    :target: http://badge.fury.io/py/django-data-seeder
