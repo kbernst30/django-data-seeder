@@ -20,23 +20,30 @@ Requirements
 Installation
 ============
 
-You can install ``data_seeder`` using ``pip``::
+You can install ``data_seeder`` using ``pip``
 
 .. code-block:: bash
 
-  pip install django-data-seeder
+    pip install django-data-seeder
+
 
 Quick Start
 ===========
 
 1. Add ``data_seeder`` to your ``INSTALLED_APPS`` in ``settings.py``
 
-.. code-block:: python
+   .. code-block:: python
 
-  INSTALLED_APPS = [
-    ...
+     INSTALLED_APPS = [
+       ...
 
-    'data_seeder',
-  ]
+       'data_seeder',
+     ]
 
-2.
+2. Seed data with the following command
+
+   .. code-block:: bash
+
+     python manage.py seeddata [options] app.models.Model [app.models.Model2, ...]
+
+   This will generate a single seed for each model provided.
