@@ -12,8 +12,8 @@ jobs:
             source venv/bin/activate
       - run:
           command: |
-            pip install django
-            pip install flake8
+            sudo pip install django
+            sudo pip install flake8
       - run:
           command: |
             python runtests.py
