@@ -19,4 +19,4 @@ jobs:
             python runtests.py
       - run:
           command: |
-            flake8
+            flake8 data_seeder
