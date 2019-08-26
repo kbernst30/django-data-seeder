@@ -15,6 +15,7 @@ setup(
     license='BSD-3-Clause',
     description='A data seeder for models for Django.',
     long_description=README,
+    url='https://github.com/kbernst30/django-data-seeder/',
     author='Kyle Bernstein',
     author_email='kbernst30@gmail.com',
     classifiers=[
