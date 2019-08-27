@@ -74,7 +74,7 @@ jobs:
       - run:
           name: upload to pypi
           command: |
-            python twine upload dist/*
+            python -m twine upload dist/*
 
 workflows:
   version: 2
