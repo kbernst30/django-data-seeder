@@ -56,7 +56,7 @@ jobs:
       - run:
           name: install setuptools
           command: |
-            sudo pip install setuptools wheel
+            sudo pip install setuptools wheel twine
       -  run:
           name: verify git tag vs. version
           command: |
@@ -70,7 +70,7 @@ jobs:
       - run:
           name: create packages
           command: |
-            python setup.py sdist bdist_wheel twine
+            python setup.py sdist bdist_wheel
       - run:
           name: upload to pypi
           command: |
