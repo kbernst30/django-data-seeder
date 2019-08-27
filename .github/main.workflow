@@ -1,6 +1,6 @@
 workflow "Publish" {
   resolves = ["publish-to-pypi"]
-  on = "release"
+  on = "push"
 }
 
 action "publish-to-pypi" {
