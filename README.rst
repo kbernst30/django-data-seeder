@@ -71,7 +71,7 @@ model field. We override this by doing the following
 
 .. code-block:: bash
 
-  python manage.py seeddata --generate-related=true apps.model.Model
+  python manage.py seeddata --generate-related apps.model.Model
 
 One limitation to this behavior is that the data seeder will not generate
 a related model if the relation is the model itself. This would cause an
