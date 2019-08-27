@@ -80,8 +80,14 @@ workflows:
   version: 2
   build:
     jobs:
-      - test
-      - lint
+      - test:
+          filters:
+            tags:
+              only: /.*/
+      - lint:
+          filters:
+            tags:
+              only: /.*/
       - deploy:
           requires:
             - test
