@@ -50,8 +50,8 @@ Quick Start
 
    This will generate a single seed for each model provided.
 
-.. |build| image:: https://circleci.com/gh/kbernst30/django-data-seeder/tree/master.svg?style=shield
-    :target: https://circleci.com/gh/kbernst30/django-data-seeder/tree/master
+.. |build| image:: https://circleci.com/gh/kbernst30/django-data-seeder.svg?style=shield
+    :target: https://circleci.com/gh/kbernst30/django-data-seeder
 
 .. |package| image:: https://badge.fury.io/py/django-data-seeder.svg
     :alt: Package Version

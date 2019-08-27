@@ -1,6 +1,7 @@
-version: 2
+version: 2.1
+
 jobs:
-  build:
+  test:
     working_directory: ~/django-data-seeder
     docker:
       - image: circleci/python:3.6.4
@@ -13,10 +14,29 @@ jobs:
       - run:
           command: |
             sudo pip install django
-            sudo pip install flake8
       - run:
           command: |
             python runtests.py
+  lint:
+    working_directory: ~/django-data-seeder
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo virtualenv venv
+            source venv/bin/activate
+      - run:
+          command: |
+            sudo pip install flake8
       - run:
           command: |
             flake8 data_seeder
+
+workflows:
+  version: 2
+  test_and_lint:
+    jobs:
+      - test
+      - lint
