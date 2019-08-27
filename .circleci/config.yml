@@ -1,6 +1,7 @@
 version: 2.1
 
 jobs:
+
   test:
     working_directory: ~/django-data-seeder
     docker:
@@ -8,15 +9,19 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install python depedencies
           command: |
             sudo virtualenv venv
             source venv/bin/activate
       - run:
+          name: install django
           command: |
             sudo pip install django
       - run:
+          name: run tests
           command: |
             python runtests.py
+
   lint:
     working_directory: ~/django-data-seeder
     docker:
@@ -24,19 +29,65 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install python depedencies
           command: |
             sudo virtualenv venv
             source venv/bin/activate
       - run:
+          name: install linter
           command: |
             sudo pip install flake8
       - run:
+          name: run linter
           command: |
             flake8 data_seeder
 
+  deploy:
+    working_directory: ~/django-data-seeder
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run:
+          name: install python depedencies
+          command: |
+            sudo virtualenv venv
+            source venv/bin/activate
+      - run:
+          name: install setuptools
+          command: |
+            sudo pip install setuptools wheel
+      -  run:
+          name: verify git tag vs. version
+          command: |
+            python setup.py verify
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = kbernst30" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: create packages
+          command: |
+            python setup.py sdist bdist_wheel twine
+      - run:
+          name: upload to pypi
+          command: |
+            python twine upload dist/*
+
 workflows:
   version: 2
-  test_and_lint:
+  build:
     jobs:
       - test
       - lint
+      - deploy:
+          requires:
+            - test
+            - lint
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
