@@ -20,15 +20,15 @@ class Command(BaseCommand):
 
         parser.add_argument(
             '--generate-related',
-            action='store_false',
+            action='store_true',
             help='Generate foreign key relations instead of using random model'
         )
 
     def handle(self, *args, **options):
         models = self._get_models(options["models"])
-        seeds = int(options["seeds"]) if "seeds" in options else 1
-        generate_related = options["generate-related"] if "generate-related" \
-            in options else False
+        seeds = int(options["seeds"]) if options["seeds"] else 1
+        generate_related = options["generate_related"] \
+            if options["generate_related"] else False
 
         for model in models:
             self.stdout.write(self.style.WARNING('\nSeeding data for "%s"...' %

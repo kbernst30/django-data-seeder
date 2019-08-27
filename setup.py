@@ -31,7 +31,11 @@ class VerifyVersionCommand(install):
 
 setup(
     name='django-data-seeder',
+<<<<<<< HEAD
     version=VERSION,
+=======
+    version='0.1.1',
+>>>>>>> a298065542dfb553b3c6d7f5b27cf5a34dfc8cde
     packages=find_packages(),
     include_package_data=True,
     license='BSD-3-Clause',
