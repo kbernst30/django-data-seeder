@@ -120,7 +120,7 @@ You can also register your models using a decorator instead
   @admin.register(MyModel)
   @data_generator_register
   class MyModelAdmin(admin.ModelAdmin):
-    pass
+      pass
 
 
 Contribute
