@@ -57,9 +57,9 @@ Advanced Usage of the Management Command
 In addition to generating single seeds for models, the ``seeddata`` can
 also create as many seeds as you want
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    python manage.py seeddata --seeds=N apps.model.Model
+  python manage.py seeddata --seeds=N apps.model.Model
 
 This will generate ``N`` seeds for ``apps.model.Model``
 
@@ -69,9 +69,9 @@ seeds for models. The default behaviour for this is disabled, meaning
 that a randomly selected existing model will be used for the related
 model field. We override this by doing the following
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    python manage.py seeddata --generate-related=true apps.model.Model
+  python manage.py seeddata --generate-related=true apps.model.Model
 
 One limitation to this behavior is that the data seeder will not generate
 a related model if the relation is the model itself. This would cause an
@@ -80,9 +80,9 @@ infinite recursion.
 For more information about the ``seeddata`` command, please look at the
 help page.
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    python manage.py help seeddata
+  python manage.py help seeddata
 
 
 Using the Django Admin Site
@@ -95,14 +95,14 @@ To do this, you must register your models with the admin site using the
 custom ``ModelAdmin`` class provided. For example, in ``admin.py`` for
 your app
 
-  .. code-block:: python
+.. code-block:: python
 
-    from django.contrib import admin
+  from django.contrib import admin
 
-    from .models import MyModel
-    from data_seeder.admin import DataGeneratorAdmin
+  from .models import MyModel
+  from data_seeder.admin import DataGeneratorAdmin
 
-    admin.site.register(MyModel, DataGeneratorAdmin)
+  admin.site.register(MyModel, DataGeneratorAdmin)
 
 This will add a button to the model page in the admin site to generate
 data, which will provide you with the same options available in the
@@ -110,17 +110,17 @@ management command.
 
 You can also register your models using a decorator instead
 
-  .. code-block:: python
+.. code-block:: python
 
-    from django.contrib import admin
+  from django.contrib import admin
 
-    from .models import MyModel
-    from data_seeder.admin import data_generator_register
+  from .models import MyModel
+  from data_seeder.admin import data_generator_register
 
-    @admin.register(MyModel)
-    @data_generator_register
-    class MyModelAdmin(admin.ModelAdmin):
-      pass
+  @admin.register(MyModel)
+  @data_generator_register
+  class MyModelAdmin(admin.ModelAdmin):
+    pass
 
 
 Contribute
@@ -131,11 +131,11 @@ fork it, file bugs, or contribute.
 
 Feel free to send me a message by email_ or twitter_.
 
-.. GitHub_: https://github.com/kbernst30/django-data-seeder
+.. _GitHub: https://github.com/kbernst30/django-data-seeder
 
-.. mail: mailto:kbernst30@gmail.com
+.. _email: mailto:kbernst30@gmail.com
 
-.. twitter: https://twitter.com/kbernst30
+.. _twitter: https://twitter.com/kbernst30
 
 .. |build| image:: https://circleci.com/gh/kbernst30/django-data-seeder.svg?style=shield
     :target: https://circleci.com/gh/kbernst30/django-data-seeder
