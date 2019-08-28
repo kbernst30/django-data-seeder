@@ -1,3 +1,6 @@
+import datetime
+import uuid
+
 from unittest import TestCase
 from decimal import Decimal
 
@@ -195,3 +198,47 @@ class TestStringGenerator(TestCase):
         self.assertIsNotNone(value)
         self.assertEquals(type(value), str)
         self.assertTrue(len(value) <= 30)
+
+
+class TestDateTimeGenerator(TestCase):
+
+    def setUp(self):
+        self.generator = generators.DateTimeGenerator()
+
+    def test_generate(self):
+        value = self.generator.generate()
+        self.assertIsNotNone(value)
+        self.assertEquals(type(value), datetime.datetime)
+
+
+class TestDateGenerator(TestCase):
+
+    def setUp(self):
+        self.generator = generators.DateGenerator()
+
+    def test_generate(self):
+        value = self.generator.generate()
+        self.assertIsNotNone(value)
+        self.assertEquals(type(value), datetime.date)
+
+
+class TestTimeGenerator(TestCase):
+
+    def setUp(self):
+        self.generator = generators.TimeGenerator()
+
+    def test_generate(self):
+        value = self.generator.generate()
+        self.assertIsNotNone(value)
+        self.assertEquals(type(value), datetime.time)
+
+
+class TestUuidGenerator(TestCase):
+
+    def setUp(self):
+        self.generator = generators.UuidGenerator()
+
+    def test_generate(self):
+        value = self.generator.generate()
+        self.assertIsNotNone(value)
+        self.assertEquals(type(value), uuid.UUID)
