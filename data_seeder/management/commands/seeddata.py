@@ -1,3 +1,7 @@
+'''
+Adds the seeddata management command for Django manage.py
+'''
+
 import importlib
 
 from django.core.management.base import BaseCommand, CommandError
@@ -7,6 +11,19 @@ from ...base import DataSeeder
 
 
 class Command(BaseCommand):
+    '''
+    The command class
+
+    This command creates the seeddata command for manage.py.
+    By running this command, we can create data seeds for
+    development and test DBs
+
+    Attributes
+    ----------
+    help : str
+        the help text for this command
+    '''
+
     help = "Seeds random data into the supplied model(s)"
 
     def add_arguments(self, parser):
