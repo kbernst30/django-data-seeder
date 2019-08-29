@@ -16,7 +16,7 @@ class DataSeeder:
 
 
     Attributes
-    __________
+    ----------
 
     field_generators : list
         a list of tuples mapping field types (i.e. BooleanField) to generator
@@ -37,7 +37,7 @@ class DataSeeder:
 
 
     Methods
-    _______
+    -------
 
     seed()
         generates seed(s) for the attrributed model
