@@ -686,10 +686,12 @@ class DateGenerator(DateTimeGenerator):
         ----------
 
         min_date: datetime.date, optional
-            the lower bounds for the random date (default is 30 days before now)
+            the lower bounds for the random date
+            (default is 30 days before now)
 
         max_date: datetime.date, optional
-            the upper bounds for the random date (default is 30 days from now)
+            the upper bounds for the random date
+            (default is 30 days from now)
         '''
 
         min_datetime = None
