@@ -1,9 +1,48 @@
+'''
+Base classes for data-seeder usage.
+
+These are the classes that do the most work in terms of deciding how to seed
+data and what to do with it.
+'''
+
 from django.db import models
 
 from . import generators
 
 
 class DataSeeder:
+    '''
+    Handles the logic of generating data seeds and saving them.
+
+
+    Attributes
+    __________
+
+    field_generators : list
+        a list of tuples mapping field types (i.e. BooleanField) to generator
+        classes (i.e. BooleanGenerator)
+
+    model : type
+        a type that is a subclass of django.db.models.Model to generate seeds
+        for
+
+    seeds : int
+        the number of seeds that this seeder will generate
+
+    generate_related : bool
+        whether or not to follow and generate foreign relations recursively
+
+    values : dict
+        a dictionary of static values to use instead of random generators
+
+
+    Methods
+    _______
+
+    seed()
+        generates seed(s) for the attrributed model
+
+    '''
 
     field_generators = [
         (models.BigIntegerField, generators.IntegerGenerator),
@@ -28,12 +67,36 @@ class DataSeeder:
     ]
 
     def __init__(self, model, seeds=1, generate_related=False, values={}):
+        '''
+        Parameters
+        ----------
+
+        model : type
+            a type that is a subclass of django.db.models.Model to generate
+            seeds for
+
+        seeds : int, optional
+            the number of seeds that this seeder will generate (default is 1)
+
+        generate_related : bool, optional
+            whether or not to follow and generate foreign relations recursively
+            (default is False)
+
+        values : dict, optional
+            a dictionary of static values to use instead of random generators
+            (default is {})
+        '''
+
         self.model = model
         self.seeds = seeds
         self.generate_related = generate_related
         self.values = values
 
     def seed(self):
+        '''
+        Generates and saves seeds for the objects model
+        '''
+
         seeds = []
         associated_models = {}
 
